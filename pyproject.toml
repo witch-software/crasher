@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "crasher"
+version = "0.1.0"
+description = "Glitch art application"
+authors = ["selfkilla666 <selfkilla666yahoo.com>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+pillow = "^10.1.0"
+types-pillow = "^10.1.0.0"
+pyside6 = "^6.6.0"
+loguru = "^0.7.2"
+toml = "^0.10.2"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.6.1"
+loguru-mypy = "^0.0.4"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

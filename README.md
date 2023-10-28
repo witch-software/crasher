@@ -1,5 +1,5 @@
-## Crasher — 🎨👨🏻‍💻 Application for making glitch art
----
+# Crasher
+🎨👨🏻‍💻 Application for making glitch art
 
 ![Made with Python](https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-black.svg)

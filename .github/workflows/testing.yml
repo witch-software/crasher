@@ -1,9 +1,10 @@
 name: Testing applications sources
 
 on:
+  workflow_dispatch:
   push:
     paths:
-      - '*.py'
+      - '**.py'
 
 jobs:
   lint:

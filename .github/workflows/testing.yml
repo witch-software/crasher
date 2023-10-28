@@ -21,8 +21,9 @@ jobs:
           architecture: x64
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Python environment
+      - name: Install poetry
         uses: SG60/setup-poetry@v1
+      - name: Setup Python environment
         run: poetry install --with dev
       - name: Check code style (using flake8)
         run: flake8 crasher

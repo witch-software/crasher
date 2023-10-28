@@ -23,12 +23,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Install poetry
-        uses: SG60/setup-poetry@v1
+        run: pip install poetry
+        working-directory: ${{ github.workspace }}
       - name: Setup Python environment
         run: poetry install --with dev
+        working-directory: ${{ github.workspace }}
       - name: Check code style (using flake8)
         run: python -m flake8 crasher
+        working-directory: ${{ github.workspace }}
       - name: Check correct typing (using mypy)
         run: mypy crasher
+        working-directory: ${{ github.workspace }}
   #unittest:
   # TODO: Add unittests to this workflow

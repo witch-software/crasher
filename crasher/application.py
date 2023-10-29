@@ -17,8 +17,8 @@ APPLICATION_ORG_DOMAIN: str = "witch-software.com"
 def run_application() -> None:
 
     # Setup logger
-    logger.add(str(get_user_local_directory()) + "logs/log_{time}.log",
-               format="{time:HH:mm:ss.SS} | {file} | {level} | {message}",
+    logger.add(str(get_user_local_directory()) + r"\logs\log_{time}.log",
+               format="{time:HH:mm:ss.SS} ({file}) [{level}] {message}",
                colorize=True)
 
     logger.info("Application starts")
@@ -37,7 +37,7 @@ def run_application() -> None:
     # Initialize application window
     window: QCrasherWindow = QCrasherWindow(
         application=application,
-        logger=logger
+        logger_=logger
     )
 
     # Start application

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "crasher"
-version = "0.1.0"
+version = "1.0.0b"
 description = "Glitch art application"
 authors = ["selfkilla666 <selfkilla666yahoo.com>"]
 license = "MIT License"

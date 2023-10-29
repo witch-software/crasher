@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import sys
-from typing import NoReturn
 from PySide6.QtWidgets import QApplication
 
 from loguru import logger
@@ -15,11 +14,12 @@ APPLICATION_ORG_NAME: str = "Witch Software"
 APPLICATION_ORG_DOMAIN: str = "witch-software.com"
 
 
-def run_application() -> NoReturn:
+def run_application() -> None:
 
     # Setup logger
     logger.add(str(get_user_local_directory()) + "logs/log_{time}.log",
-               format="{time:HH:mm:ss.SS} | {file} | {level} | {message}", colorize=True)
+               format="{time:HH:mm:ss.SS} | {file} | {level} | {message}",
+               colorize=True)
 
     logger.info("Application starts")
 

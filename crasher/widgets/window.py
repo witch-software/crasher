@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from PySide6.QtWidgets import QApplication, QMainWindow
-from loguru import logger
+from loguru import Logger
 
 
 __all__ = ["QCrasherWindow"]
@@ -17,11 +17,11 @@ class QCrasherWindow(QMainWindow):
     # Todo: Add onClose event handler
     # Todo: Add commentaries at code
 
-    def __init__(self, *, application: QApplication, logger: logger) -> None:
+    def __init__(self, *, application: QApplication, logger: Logger) -> None:
         super().__init__()
 
         self.application: QApplication = application
-        self.logger: logger = logger
+        self.logger: Logger = logger
 
         self.initialize_ui()
         self.logger.success("Window initialized!")

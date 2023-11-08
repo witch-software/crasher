@@ -17,16 +17,16 @@ class QCrasherApplication(QApplication):
     APPLICATION_ORG_NAME: str = "Witch Software"
     APPLICATION_ORG_DOMAIN: str = "witch-software.com"
 
-    def __init__(self, argv: list[str], *, arguments: Namespace, logger_: TypeAlias[logger]) -> None:
+    def __init__(self, argv: list[str], *, arguments_: Namespace, logger_: TypeAlias[logger]) -> None:
         """
         Initialize the QCrasherApplication.
 
         :type argv: list[str]
-        :type arguments: argparse.Namespace
+        :type arguments_: argparse.Namespace
         :type logger_: TypeAlias[loguru.logger]
 
         :param argv: Command-line arguments passed to the application.
-        :param arguments: Parsed command-line arguments for configuration.
+        :param arguments_: Parsed command-line arguments for configuration.
         :param logger_: An instance of the logger for logging application events.
 
         :rtype: None
@@ -36,7 +36,7 @@ class QCrasherApplication(QApplication):
 
         super(QCrasherApplication, self).__init__(argv)
 
-        self.arguments: Namespace = arguments
+        self.run_arguments: Namespace = arguments_
         self.logger: TypeAlias[logger] = logger_
 
         self.initialize_application()

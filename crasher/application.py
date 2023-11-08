@@ -36,11 +36,9 @@ def run_application() -> None:
         logger.debug(f"Running application with arguments: {sys.argv[1:]}")
 
     # Setup Qt application
-    application: QCrasherApplication = QCrasherApplication(
-        sys.argv, arguments=args, logger_=logger
-    )
+    application: QCrasherApplication = QCrasherApplication(sys.argv, arguments_=args, logger_=logger)
 
-    if not application.arguments.windowless:
+    if not application.run_arguments.windowless:
 
         # Initialize application window
         window: QCrasherWindow = QCrasherWindow(application=application)

@@ -3,14 +3,16 @@ from __future__ import annotations
 from typing import TypeAlias
 from loguru import logger
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QMainWindow
+
+from crasher.widgets.application import QCrasherApplication
 
 
 __all__ = ["QCrasherWindow"]
 
 
 class QCrasherWindow(QMainWindow):
-    """ Class of application window for Crasher """
+    """ Class of application window for Crasher. """
 
     # Todo: Add menu- & statusbar
     # Todo: Make hello central widget
@@ -19,17 +21,17 @@ class QCrasherWindow(QMainWindow):
     # Todo: Add onClose event handler
     # Todo: Add commentaries at code
 
-    def __init__(self,
-                 *,
-                 application: QApplication,
-                 logger_: TypeAlias[logger]
-                 ) -> None:
+    def __init__(self, *, application: QCrasherApplication) -> None:
+
+        logger.info("Initialize application window...")
+
         super().__init__()
 
-        self.application: QApplication = application
-        self.logger: TypeAlias[logger] = logger_
+        self.application: QCrasherApplication = application
+        self.logger: TypeAlias[logger] = self.application.logger
 
         self.initialize_ui()
+
         self.logger.success("Window initialized!")
 
     def initialize_ui(self) -> None:

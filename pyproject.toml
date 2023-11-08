@@ -13,6 +13,10 @@ types-pillow = "^10.1.0.0"
 pyside6 = "^6.6.0"
 loguru = "^0.7.2"
 toml = "^0.10.2"
+numpy = "^1.26.1"
+blend-modes = "^2.1.0"
+cffi = "^1.16.0"
+argparse = "^1.4.0"
 
 
 [tool.poetry.group.dev.dependencies]

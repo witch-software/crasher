@@ -15,24 +15,45 @@ jobs:
     name: Linting on Python ${{ matrix.python-version }}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache poetry dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/*.toml') }}
+        restore-keys: |
+          ${{ runner.os }}-poetry-
+
       - name: Install Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-      - name: Checkout repository
-        uses: actions/checkout@v3
+
       - name: Install poetry
-        run: pip install poetry
+        run: |
+          pip install poetry
         working-directory: ${{ github.workspace }}
+
       - name: Setup Python environment
-        run: poetry install --with dev
+        run: |
+          poetry config virtualenvs.create true
+          poetry install --with dev
         working-directory: ${{ github.workspace }}
+
       - name: Check code style (using flake8)
-        run: poetry run flake8 crasher
+        run: |
+          poetry run flake8 crasher
         working-directory: ${{ github.workspace }}
+
       - name: Check correct typing (using mypy)
-        run: poetry run mypy crasher
+        run: |
+          poetry run mypy crasher
         working-directory: ${{ github.workspace }}
+
+
   #unittest:
   # TODO: Add unittests to this workflow

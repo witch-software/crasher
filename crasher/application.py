@@ -1,3 +1,7 @@
+# Code by @selfkilla666
+# https://github.com/witch-software/crasher
+# MIT License
+
 from __future__ import annotations
 
 import sys
@@ -7,12 +11,11 @@ import platform
 from loguru import logger
 
 from crasher.widgets.application import QCrasherApplication
-from crasher.widgets.window import QCrasherWindow
 from crasher.utils.path import get_user_local_directory
 
 
-def run_application() -> None:
-    """  """
+def get_run_arguments() -> argparse.Namespace:
+    """ Get application startup arguments """
 
     argument_parser: argparse.ArgumentParser = argparse.ArgumentParser(
         prog="crasher",
@@ -20,13 +23,21 @@ def run_application() -> None:
     )
 
     argument_parser.add_argument("--windowless", action="store_true", help="run in windowless mode", default=False)
+    argument_parser.add_argument("--debug", action="store_true", help="run application in debug mode", default=False)
 
-    args = argument_parser.parse_args()
+    return argument_parser.parse_args()
+
+
+def run_application() -> None:
+
+    args = get_run_arguments()
 
     # Setup logger
-    logger.add(str(get_user_local_directory()) + r"\logs\log_{time}.log",
-               format="{time:HH:mm:ss.SS} ({file}) [{level}] {message}",
-               colorize=True)
+    logger.add(
+        str(get_user_local_directory()) + r"\logs\log_{time}.log",
+        format="{time:HH:mm:ss.SS} ({file}) [{level}] {message}",
+        colorize=True
+    )
 
     logger.info("Application starts")
 
@@ -35,20 +46,8 @@ def run_application() -> None:
     if sys.argv[1:]:
         logger.debug(f"Running application with arguments: {sys.argv[1:]}")
 
-    # Setup Qt application
+    # Setup application
     application: QCrasherApplication = QCrasherApplication(sys.argv, arguments_=args, logger_=logger)
-
-    if not application.run_arguments.windowless:
-
-        # Initialize application window
-        window: QCrasherWindow = QCrasherWindow(application=application)
-
-        # Show application window
-        window.show()
-
-    else:
-
-        logger.info("Application is running in windowless mode")
 
     # Execute application
     application.exec()

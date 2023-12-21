@@ -24,8 +24,8 @@ jobs:
           path: |
             ~/.cache/pypoetry
           key: ${{ runner.os }}-poetry-${{ hashFiles('**/*.toml') }}
-        restore-keys: |
-          ${{ runner.os }}-poetry-
+          restore-keys: |
+            ${{ runner.os }}-poetry-
 
       - name: Install Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4

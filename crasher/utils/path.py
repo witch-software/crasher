@@ -9,7 +9,22 @@ from pathlib import Path
 import os
 
 
-def get_user_local_directory() -> Path:
+__all__ = ["get_user_local_directory"]
+
+
+DEFAULT_PATHS: dict[dict[str, str]] = {
+    "nt": {
+        "org": "Witch Software",
+        "application": "Crasher"
+    },
+    "posix": {
+        "org": "witchsoftware",
+        "application": "crasher"
+    }
+}
+
+
+def get_user_local_directory(paths: dict[dict[str, str]] = DEFAULT_PATHS) -> Path:
     """
     Get the user's local directory for application data.
 
@@ -24,15 +39,11 @@ def get_user_local_directory() -> Path:
 
     # Determine the user's local application directory
     if os.name == "posix":
-        path = Path(
-            os.path.expanduser('~/.witchsoftware/crasher/')
-        )
+        path = Path(os.path.expanduser(f"~/.{paths[os.name]['org']}/{paths[os.name]['application']}/"))
     elif os.name == "nt":
         path = Path(
             os.path.expanduser(
-                'C:/Users/{}/AppData/Local/Witch Software/Crasher/'.format(
-                    os.getlogin()
-                )
+                f"C:/Users/{os.getlogin()}/AppData/Local/{paths[os.name]['org']}/{paths[os.name]['application']}/"
             )
         )
     else:

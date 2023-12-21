@@ -9,20 +9,19 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
 pillow = "^10.1.0"
-types-pillow = "^10.1.0.0"
 pyside6 = "^6.6.0"
 loguru = "^0.7.2"
 toml = "^0.10.2"
 numpy = "^1.26.1"
-blend-modes = "^2.1.0"
 cffi = "^1.16.0"
 argparse = "^1.4.0"
 
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.6.1"
-loguru-mypy = "^0.0.4"
 flake8 = "^6.1.0"
+types-pillow = "^10.1.0.0"
+types-toml = "^0.10.8.7"
 
 [build-system]
 requires = ["poetry-core"]

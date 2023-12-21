@@ -3,4 +3,11 @@ name: Build sources
 on:
   workflow_dispatch:
 
+jobs:
+  wtf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make it in future
+        run: echo "Omg, please kill me 😩"
+
 # TODO: Make it in future

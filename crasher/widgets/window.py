@@ -8,6 +8,7 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QStatusBar, QMenuBar, Q
 from PySide6.QtGui import QAction
 
 from crasher.utils.log_handler import StatusBarLogHandler
+from crasher.widgets.welcome import QCrasherWelcomeWidget
 
 import loguru
 
@@ -68,3 +69,6 @@ class QCrasherWindow(QMainWindow):
         file_menu.addAction(exit_window_action)
 
         self.setMenuBar(self.menu_bar)
+
+        self.welcome_widget = QCrasherWelcomeWidget(self)
+        self.setCentralWidget(self.welcome_widget)

@@ -24,7 +24,7 @@ Crasher is provided under the [MIT License](https://github.com/witch-software/cr
 ```text
 MIT License
 
-Copyright (c) 2023 selfkilla666
+Copyright (c) 2023 Witch Software
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

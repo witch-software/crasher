@@ -1,3 +1,6 @@
 name: Build sources
 
+on:
+  workflow_dispatch:
+
 # TODO: Make it in future

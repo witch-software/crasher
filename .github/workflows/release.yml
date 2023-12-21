@@ -1,3 +1,6 @@
 name: Release builds
 
+on:
+  workflow_dispatch:
+
 # TODO: Make it in future

@@ -4,13 +4,12 @@
 
 from __future__ import annotations
 
-from typing import TypeAlias
-from loguru import logger
-
 from PySide6.QtWidgets import QMainWindow, QApplication, QStatusBar, QMenuBar, QMenu
 from PySide6.QtGui import QAction
 
 from crasher.utils.log_handler import StatusBarLogHandler
+
+import loguru
 
 
 __all__ = ["QCrasherWindow"]
@@ -29,12 +28,12 @@ class QCrasherWindow(QMainWindow):
 
     def __init__(self, *, application: QApplication) -> None:
 
-        logger.info("Initialize application window...")
-
         super().__init__()
 
         self.application: QApplication = application
-        self.logger: TypeAlias[logger] = self.application.logger
+        self.logger: loguru.Logger = self.application.logger    # type: ignore[attr-defined]
+
+        self.logger.info("Initialize application window...")
 
         self.initialize_ui()
 

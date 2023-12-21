@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from path import Path
+from pathlib import Path
 from hashlib import new as new_algorithm
 
 

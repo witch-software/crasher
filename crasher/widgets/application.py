@@ -5,7 +5,6 @@
 from __future__ import annotations
 
 from argparse import Namespace
-from loguru._logger import Logger
 
 from pathlib import Path
 
@@ -13,6 +12,8 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtGui import QIcon
 
 from crasher.widgets.window import QCrasherWindow
+
+import loguru
 
 
 __all__ = ["QCrasherApplication"]
@@ -27,10 +28,10 @@ class QCrasherApplication(QApplication):
     APPLICATION_ORG_DOMAIN: str = "witch-software.com"
 
     run_arguments: Namespace
-    logger: Logger
+    logger: loguru.Logger
     window: QMainWindow
 
-    def __init__(self, argv: list[str], *, arguments_: Namespace, logger_: Logger) -> None:
+    def __init__(self, argv: list[str], *, arguments_: Namespace, logger_: loguru.Logger) -> None:
         """
         Initialize the QCrasherApplication.
 

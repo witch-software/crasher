@@ -12,7 +12,7 @@ import os
 __all__ = ["get_user_local_directory"]
 
 
-DEFAULT_PATHS: dict[dict[str, str]] = {
+DEFAULT_PATHS: dict[str, dict[str, str]] = {
     "nt": {
         "org": "Witch Software",
         "application": "Crasher"
@@ -24,7 +24,7 @@ DEFAULT_PATHS: dict[dict[str, str]] = {
 }
 
 
-def get_user_local_directory(paths: dict[dict[str, str]] = DEFAULT_PATHS) -> Path:
+def get_user_local_directory(paths: dict[str, dict[str, str]] = DEFAULT_PATHS) -> Path:
     """
     Get the user's local directory for application data.
 

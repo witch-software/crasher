@@ -20,10 +20,17 @@ def are_keys_present(dictionary_to_check: dict[Any, Any], dictionary_pattern: di
     """
 
     for key, value in dictionary_pattern.items():
-        if key not in dictionary_to_check or not are_keys_present(dictionary_to_check[key], value):
+        if key not in dictionary_to_check:
+            return False
+
+        if isinstance(value, dict):
+            if not isinstance(dictionary_to_check[key], dict) or not are_keys_present(dictionary_to_check[key], value):
+                return False
+        elif value is not None and dictionary_to_check[key] != value:
             return False
 
     return True
+
 
 def add_missing_values(dictionary_to_check: dict[Any, Any], dictionary_pattern: dict[Any, Any]) -> dict[Any, Any]:
     """

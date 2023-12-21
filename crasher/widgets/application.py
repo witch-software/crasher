@@ -8,12 +8,15 @@ from argparse import Namespace
 
 from pathlib import Path
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
 
 from crasher.widgets.window import QCrasherWindow
+from crasher.classes.settings import QCrasherApplicationSettings
+from crasher.utils.path import get_user_local_directory
 
 import loguru
+import platform
 
 
 __all__ = ["QCrasherApplication"]
@@ -22,52 +25,65 @@ __all__ = ["QCrasherApplication"]
 class QCrasherApplication(QApplication):
     """ Custom PySide6.QApplication implementation for Crasher """
 
-    APPLICATION_TITLE: str = "Crasher"
+    APPLICATION_NAME: str = "Crasher"
     APPLICATION_VERSION: str = "1.0.0b"
     APPLICATION_ORG_NAME: str = "Witch Software"
     APPLICATION_ORG_DOMAIN: str = "witch-software.com"
 
     run_arguments: Namespace
     logger: loguru.Logger
-    window: QMainWindow
+    settings: QCrasherApplicationSettings
+    window: QCrasherWindow
 
-    def __init__(self, argv: list[str], *, arguments_: Namespace, logger_: loguru.Logger) -> None:
+    debug: bool = True
+
+    def __init__(self, argv: list[str], *, arguments_: Namespace) -> None:
         """
         Initialize the QCrasherApplication.
 
-        :type argv: list[str]
-        :type arguments_: argparse.Namespace
-        :type logger_: loguru.Logger
-
         :param argv: Command-line arguments passed to the application.
         :param arguments_: Parsed command-line arguments for configuration.
-        :param logger_: An instance of the logger for logging application events.
-
-        :rtype: None
         """
 
-        # Todo: Add settings config
+        self.initialize_logger()
+        self.logger.info("Application starts")
 
         super(QCrasherApplication, self).__init__(argv)
 
         self.run_arguments = arguments_
-        self.logger = logger_
+        self.debug = self.run_arguments.debug or True
 
-        self.initialize_application()
+        self.log_debug_info(argv)
+
+        self.logger.info("Start application initialization...")
+
+        # Initialize application parts
+        self.initialize_application_information()
+        self.initialize_settings()
         self.initialize_window()
 
-    def initialize_application(self) -> None:
-        """
-        Method to initialize the application.
+        self.logger.success("Application is fully initialized!")
 
-        :rtype: None
-        """
+    def initialize_logger(self) -> None:
+        """ Method to initialize application logger """
+
+        self.logger: loguru.Logger = loguru.logger
+
+        # Setup logger
+        self.logger.add(
+            str(get_user_local_directory()) + r"\logs\log_{time}.log",
+            format="{time:HH:mm:ss.SS} ({file}) [{level}] {message}",
+            colorize=True
+        )
+
+    def initialize_application_information(self) -> None:
+        """ Method to initialize application information """
 
         # Connect application events
         self.aboutToQuit.connect(self.on_close_event)
 
         # Set application metadata
-        self.setApplicationName(self.APPLICATION_TITLE)
+        self.setApplicationName(self.APPLICATION_NAME)
         self.setApplicationVersion(self.APPLICATION_VERSION)
         self.setOrganizationName(self.APPLICATION_ORG_NAME)
         self.setOrganizationDomain(self.APPLICATION_ORG_DOMAIN)
@@ -76,24 +92,54 @@ class QCrasherApplication(QApplication):
         icon = QIcon(str(Path("./static/gui/icons/icon.png")))
         self.setWindowIcon(icon)
 
+    def initialize_settings(self) -> None:
+        """ Method to initialize application settings """
+
+        self.logger.info("Initialize application settings...")
+
+        self.settings: QCrasherApplicationSettings = QCrasherApplicationSettings(
+            Path(f"{get_user_local_directory()}\\settings.toml"),
+            logger=self.logger
+        )
+        self.settings.load_settings()
+
     def initialize_window(self) -> None:
+        """ Method to initialize application window """
+
+        self.logger.info("Initialize application window...")
 
         if not self.run_arguments.windowless:
+
             self.window: QCrasherWindow = QCrasherWindow(application=self)
             self.window.show()
+
+            self.logger.success("Window initialized!")
+
         else:
             self.logger.info("Application is running in windowless mode")
 
-    def set_window(self, window: QMainWindow) -> None:
-        self.window = window
+    def log_debug_info(self, argv: list[str]):
+        """ Logging some values that might help for debugging """
+
+        if self.debug:
+            self.logger.debug("Application running in debug mode.")
+
+        self.logger.debug(f"Application version: {self.APPLICATION_VERSION}")
+
+        # Debug data about user system
+        self.logger.debug(f"Platform: {platform.system()} {platform.release()} ({platform.architecture()[0]})")
+
+        if len(argv) > 1:
+            self.logger.debug(f"Running application with arguments: {' '.join(argv[1:])}")
+
+    def handle_exception(self, exc_type, exc_value, exc_traceback) -> None:
+        self.logger.exception("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
 
     def on_close_event(self) -> None:
-        """
-        Event called when closing the application.
+        """ Event called when closing the application """
 
-        :rtype: None
-        """
+        self.logger.info("Saving application settings...")
 
-        # Todo: Add saving settings config
+        self.settings.save_settings()
 
-        self.logger.success("Application was successfully closed.")
+        self.logger.success("Application was successfully closed!")

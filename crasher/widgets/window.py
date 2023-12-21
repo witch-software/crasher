@@ -32,14 +32,10 @@ class QCrasherWindow(QMainWindow):
 
         self.application: QApplication = application
         self.logger: loguru.Logger = self.application.logger    # type: ignore[attr-defined]
-
-        self.logger.info("Initialize application window...")
-
-        self.initialize_ui()
-
-        self.logger.success("Window initialized!")
+        self.initialize_ui()                                    # TODO: Fix this typehint sometime in future ¯\_(ツ)_/¯
 
     def initialize_ui(self) -> None:
+
         self.logger.info("Initializing UI...")
 
         # Set window info

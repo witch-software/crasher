@@ -21,6 +21,7 @@ def load_json_file(path: Path) -> dict[Any, Any]:
     with open(path, 'r') as file:
         return load(file)
 
+
 def save_json_file(dictionary: dict[Any, Any], path: Path) -> None:
     """
     Save dictionary to the JSON file.

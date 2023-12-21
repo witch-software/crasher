@@ -8,9 +8,6 @@ from pathlib import Path
 from hashlib import new as new_algorithm
 
 
-__all__ = ["generate_checksum"]
-
-
 def generate_checksum(file_path: Path, *, algorithm: str = "md5", buffer_size: int = 8192) -> str:
     """
     Generate a checksum (hash value) for a file.

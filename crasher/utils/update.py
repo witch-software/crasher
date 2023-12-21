@@ -8,9 +8,6 @@ import urllib.request
 import json
 
 
-__all__ = ["get_latest_version"]
-
-
 def get_latest_version(owner: str = "witch-software", repo: str = "crasher") -> str | None:
     """
     Retrieves the latest version number of a program from a GitHub repository.

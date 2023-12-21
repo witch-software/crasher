@@ -9,9 +9,6 @@ from pathlib import Path
 import os
 
 
-__all__ = ["get_user_local_directory"]
-
-
 DEFAULT_PATHS: dict[str, dict[str, str]] = {
     "nt": {
         "org": "Witch Software",

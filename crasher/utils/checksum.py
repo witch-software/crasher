@@ -16,7 +16,7 @@ def generate_checksum(file_path: Path, *, algorithm: str = "md5", buffer_size: i
     Generate a checksum (hash value) for a file.
 
     :param file_path: Path to the file for which the checksum is to be generated.
-    :param algorithm: The hashing algorithm to be used (default is 'md5').
+    :param algorithm: The hashing algorithm to be used (default is "md5").
     :param buffer_size: Size of the buffer for reading the file in chunks (default is 8192).
     :return: The checksum of the file.
     """

@@ -4,8 +4,9 @@
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
+
+import os
 
 
 def get_user_local_directory() -> Path:
@@ -14,12 +15,9 @@ def get_user_local_directory() -> Path:
 
     This function determines the user's local
     application directory based on the operating system
-    and returns a Path object pointing to that directory.
+    and returns a pathlib.Path object pointing to that directory.
 
-    :returns: Path to the user's local application directory.
-    :rtype: Path
-    :raises OSError: If the directory creation fails or if the path
-                     cannot be determined.
+    :return: Path to the user's local application directory.
     """
 
     path: Path

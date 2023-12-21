@@ -1,0 +1,47 @@
+name: Update requirements.txt
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'poetry.lock'
+      - 'pyproject.toml'
+
+jobs:
+  update-requirements:
+    name: Update requirements.txt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+          architecture: x64
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install
+
+      - name: Check for changes in poetry.lock
+        id: check_changes
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep poetry.lock || echo "NO_CHANGES"
+
+      - name: Update requirements.txt
+        if: steps.check_changes.outputs.NO_CHANGES != 'NO_CHANGES'
+        run: |
+          poetry export --dev --without-hashes -f requirements.txt > requirements.txt
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.NO_CHANGES != 'NO_CHANGES'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@users.noreply.github.com"
+          git add requirements.txt
+          git commit -m "Autoupdate requirements.txt (CI)"
+          git push

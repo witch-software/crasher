@@ -8,7 +8,6 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QStatusBar, QMenuBar, Q
 from PySide6.QtGui import QAction
 
 from crasher.utils.log_handler import StatusBarLogHandler
-from crasher.widgets.welcome import QCrasherWelcomeWidget
 
 import loguru
 
@@ -52,7 +51,7 @@ class QCrasherWindow(QMainWindow):
         # Initialize menu bar
         self.menu_bar = QMenuBar(parent=self)
 
-        file_menu: QMenu = self.menu_bar.addMenu("File")
+        file_menu: QMenu = self.menu_bar.addMenu("&File")
 
         new_project_action: QAction = QAction(text="New project", parent=self)
         open_project_action: QAction = QAction(text="Open project", parent=self)
@@ -70,5 +69,3 @@ class QCrasherWindow(QMainWindow):
 
         self.setMenuBar(self.menu_bar)
 
-        self.welcome_widget = QCrasherWelcomeWidget(self)
-        self.setCentralWidget(self.welcome_widget)

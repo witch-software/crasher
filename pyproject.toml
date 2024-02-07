@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "crasher"
-version = "1.0.0b"
-description = "Glitch art application"
+version = "1.0.0"
+description = "🎨🔨 Application for make datamosh"
 authors = ["selfkilla666 <selfkilla666yahoo.com>"]
 license = "MIT License"
 readme = "README.md"
@@ -15,6 +15,8 @@ toml = "^0.10.2"
 numpy = "^1.26.1"
 cffi = "^1.16.0"
 argparse = "^1.4.0"
+yapsy = "^1.12.2"
+opencv-python = "^4.9.0.80"
 
 
 [tool.poetry.group.dev.dependencies]

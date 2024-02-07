@@ -31,9 +31,6 @@ def run_application() -> None:
     # Setup application
     application: QCrasherApplication = QCrasherApplication(sys.argv, arguments_=args)
 
-    # Set the global exception handler
-    sys.excepthook = application.handle_exception
-
     # Execute application
     application.exec()
 

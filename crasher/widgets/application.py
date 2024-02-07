@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+import sys
 from argparse import Namespace
 
 from pathlib import Path
@@ -72,8 +73,8 @@ class QCrasherApplication(QApplication):
         # Setup logger
         self.logger.add(
             str(get_user_local_directory()) + r"\logs\log_{time}.log",
-            format="{time:HH:mm:ss.SS} ({file}) [{level}] {message}",
-            colorize=True
+            format="{time:HH:mm:ss.SS} ({file}) [{level}] {message} {exception}",
+            colorize=True, catch=True, backtrace=True
         )
 
     def initialize_application_information(self) -> None:
@@ -131,9 +132,6 @@ class QCrasherApplication(QApplication):
 
         if len(argv) > 1:
             self.logger.debug(f"Running application with arguments: {' '.join(argv[1:])}")
-
-    def handle_exception(self, exc_type, exc_value, exc_traceback) -> None:
-        self.logger.exception("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
 
     def on_close_event(self) -> None:
         """ Event called when closing the application """

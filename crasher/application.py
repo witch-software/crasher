@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from crasher.widgets.application import QCrasherApplication
+from crasher.core.widgets.application import QCrasherApplication
 
 import sys
 import argparse

@@ -17,6 +17,7 @@ cffi = "^1.16.0"
 argparse = "^1.4.0"
 yapsy = "^1.12.2"
 opencv-python = "^4.9.0.80"
+pydantic = "^2.8.2"
 
 
 [tool.poetry.group.dev.dependencies]

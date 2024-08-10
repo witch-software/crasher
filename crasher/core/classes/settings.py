@@ -7,7 +7,7 @@ from __future__ import annotations
 from typing import Any, Optional
 from pathlib import Path
 
-from crasher.utils.validate import are_keys_present, add_missing_values
+from crasher.core.utils.validate import are_keys_present, add_missing_values
 
 import os.path
 import toml

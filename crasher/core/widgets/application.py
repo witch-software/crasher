@@ -12,9 +12,9 @@ from pathlib import Path
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
 
-from crasher.widgets.window import QCrasherWindow
-from crasher.classes.settings import QCrasherApplicationSettings
-from crasher.utils.path import get_user_local_directory
+from crasher.core.widgets.window import QCrasherWindow
+from crasher.core.classes.settings import QCrasherApplicationSettings
+from crasher.core.utils.path import get_user_local_directory
 
 import loguru
 import platform
@@ -25,11 +25,12 @@ __all__ = ["QCrasherApplication"]
 
 class QCrasherApplication(QApplication):
     """ Custom PySide6.QApplication implementation for Crasher """
-
-    APPLICATION_NAME: str = "Crasher"
-    APPLICATION_VERSION: str = "1.0.0b"
-    APPLICATION_ORG_NAME: str = "Witch Software"
-    APPLICATION_ORG_DOMAIN: str = "witch-software.com"
+    
+    class Metadata:
+        APPLICATION_NAME: str = "Crasher"
+        APPLICATION_VERSION: str = "1.0.0b"
+        APPLICATION_ORG_NAME: str = "Witch Software"
+        APPLICATION_ORG_DOMAIN: str = "witch-software.com"
 
     run_arguments: Namespace
     logger: loguru.Logger
@@ -84,10 +85,10 @@ class QCrasherApplication(QApplication):
         self.aboutToQuit.connect(self.on_close_event)
 
         # Set application metadata
-        self.setApplicationName(self.APPLICATION_NAME)
-        self.setApplicationVersion(self.APPLICATION_VERSION)
-        self.setOrganizationName(self.APPLICATION_ORG_NAME)
-        self.setOrganizationDomain(self.APPLICATION_ORG_DOMAIN)
+        self.setApplicationName(self.Metadata.APPLICATION_NAME)
+        self.setApplicationVersion(self.Metadata.APPLICATION_VERSION)
+        self.setOrganizationName(self.Metadata.APPLICATION_ORG_NAME)
+        self.setOrganizationDomain(self.Metadata.APPLICATION_ORG_DOMAIN)
 
         # Set application icon
         icon = QIcon(str(Path("./static/app_icon.png")))
@@ -125,7 +126,7 @@ class QCrasherApplication(QApplication):
         if self.debug:
             self.logger.debug("Application running in debug mode.")
 
-        self.logger.debug(f"Application version: {self.APPLICATION_VERSION}")
+        self.logger.debug(f"Application version: {self.Metadata.APPLICATION_VERSION}")
 
         # Debug data about user system
         self.logger.debug(f"Platform: {platform.system()} {platform.release()} ({platform.architecture()[0]})")

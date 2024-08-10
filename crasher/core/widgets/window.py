@@ -8,13 +8,13 @@ from typing import TYPE_CHECKING
 from PySide6.QtCore import Slot as qtSlot
 from PySide6.QtWidgets import QMainWindow
 
-from crasher.widgets.statusbar import QCrasherStatusBar
-from crasher.widgets.menubar import QCrasherMenuBar
+from crasher.core.widgets.statusbar import QCrasherStatusBar
+from crasher.core.widgets.menubar import QCrasherMenuBar
 
 import loguru
 
 if TYPE_CHECKING:
-    from crasher.widgets.application import QCrasherApplication
+    from crasher.core.widgets.application import QCrasherApplication
 
 
 class QCrasherWindow(QMainWindow):
@@ -44,13 +44,19 @@ class QCrasherWindow(QMainWindow):
         self.setWindowTitle(self.application.applicationName())
         self.setWindowIcon(self.application.windowIcon())
 
+        self.logger.success("Window info successfully initialized!")
+
         # Initialize statusbar
         self.status_bar = QCrasherStatusBar(self, logger=self.logger)
         self.setStatusBar(self.status_bar)
 
+        self.logger.success("Application statusbar successfully initialized!")
+
         # Initialize menubar
         self.menu_bar = QCrasherMenuBar(self, connect_signals=True)
         self.setMenuBar(self.menu_bar)
+
+        self.logger.success("Application menubar successfully initialized!")
 
         self.translate_ui()
 

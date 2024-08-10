@@ -73,18 +73,18 @@ class QCrasherMenuBar(QMenuBar):
         self.fileMenu: QMenu = self.addMenu("&File")
         self.editMenu: QMenu = self.addMenu("&Edit")
         self.imageMenu: QMenu = self.addMenu("&Image")
-        self.layersMenu: QMenu = self.addMenu("&Layers")
-        self.adjustmentsMenu: QMenu = self.addMenu("&Adjustments")
-        self.effectsMenu: QMenu = self.addMenu("Effect&s")
+        # self.layersMenu: QMenu = self.addMenu("&Layers")
+        # self.adjustmentsMenu: QMenu = self.addMenu("&Adjustments")
+        # self.effectsMenu: QMenu = self.addMenu("Effect&s")
         self.viewMenu: QMenu = self.addMenu("&View")
         self.helpMenu: QMenu = self.addMenu("&Help")
 
         self.initialize_file_menu(self.fileMenu)
         self.initialize_edit_menu(self.editMenu)
         self.initialize_image_menu(self.imageMenu)
-        self.initialize_layers_menu(self.layersMenu)
-        self.initialize_adjustments_menu(self.adjustmentsMenu)
-        self.initialize_effects_menu(self.effectsMenu)
+        # self.initialize_layers_menu(self.layersMenu)
+        # self.initialize_adjustments_menu(self.adjustmentsMenu)
+        # self.initialize_effects_menu(self.effectsMenu)
         self.initialize_view_menu(self.viewMenu)
         self.initialize_help_menu(self.helpMenu)
 
@@ -99,9 +99,9 @@ class QCrasherMenuBar(QMenuBar):
 
     def initialize_file_menu(self, menu: QMenu) -> None:
 
-        self.newAction: QAction = QAction(text="New...", parent=self.parent())
+        self.newAction: QAction = QAction(text="New", parent=self.parent())
         self.openAction: QAction = QAction(text="Open...", parent=self.parent())
-        self.saveAction: QAction = QAction(text="Save", parent=self.parent())
+        self.saveAction: QAction = QAction(text="Save...", parent=self.parent())
         self.saveAsAction: QAction = QAction(text="Save as...", parent=self.parent())
         self.settingsAction: QAction = QAction(text="Settings", parent=self.parent())
         self.exitAction: QAction = QAction(text="Exit", parent=self.parent())

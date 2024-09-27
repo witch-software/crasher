@@ -39,7 +39,7 @@ Crasher is open-source software licensed under the [MIT License](https://github.
 ```text
 MIT License
 
-Copyright (c) 2023 Witch Software
+Copyright (c) 2024 Witch Software
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

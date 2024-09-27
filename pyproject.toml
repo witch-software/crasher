@@ -3,7 +3,7 @@ name = "crasher"
 version = "1.0.0"
 description = "🎨🔨 Application for make datamosh"
 authors = ["selfkilla666 <selfkilla666yahoo.com>"]
-license = "MIT License"
+license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]

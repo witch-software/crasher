@@ -33,16 +33,5 @@ build-backend = "poetry.core.masonry.api"
 [tool.ruff]
 exclude = [".git", "__pycache__", "venv", "pyproject.toml"]
 ignore = [
-    "H101",  # File contains shebang
-    "H202",  # Use of `print` as a statement
-    "H233",  # Tab character used
-    "H301",  # One import per line
-    "H306",  # Imports not grouped
-    "H401",  # Multiple blank lines
-    "H403",  # Imports are not grouped
-    "H404",  # First party imports are not grouped
-    "H405",  # Library imports are not grouped
-    "H501",  # F-strings are not being used
-    "E501",  # Line too long
-    "W292",  # No newline at end of file
+    "W191", "I001", "I201", "I202", "E303", "RUF005", "E501", "W292"
 ]

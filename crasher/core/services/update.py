@@ -1,8 +1,3 @@
-# Code by @selfkilla666
-# https://github.com/witch-software/crasher
-# MIT License
-
-from __future__ import annotations
 
 import urllib.request
 import json

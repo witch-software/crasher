@@ -1,8 +1,4 @@
-# Code by @selfkilla666
-# https://github.com/witch-software/crasher
-# MIT License
 
-from __future__ import annotations
 from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtWidgets import QStatusBar
@@ -10,7 +6,7 @@ from PySide6.QtWidgets import QStatusBar
 import loguru
 
 if TYPE_CHECKING:
-    from crasher.widgets.window import QCrasherWindow
+    from crasher.core.widgets.window import QCrasherWindow
 
 
 class QCrasherStatusBar(QStatusBar):
@@ -28,7 +24,7 @@ class QCrasherStatusBar(QStatusBar):
             self.status_bar.showMessage(message)
 
     logger: loguru.Logger
-    logger_handler: QCrasherStatusBar.StatusBarLogHandler
+    logger_handler: StatusBarLogHandler
 
     def __init__(self, parent: Optional[QCrasherWindow] = None, *, logger: Optional[loguru.Logger] = None) -> None:
 

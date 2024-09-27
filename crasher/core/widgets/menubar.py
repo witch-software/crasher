@@ -1,15 +1,11 @@
-# Code by @selfkilla666
-# https://github.com/witch-software/crasher
-# MIT License
 
-from __future__ import annotations
 from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtWidgets import QMenuBar, QMenu
 from PySide6.QtGui import QAction, QKeySequence
 
 if TYPE_CHECKING:
-    from crasher.widgets.window import QCrasherWindow
+    from crasher.core.widgets.window import QCrasherWindow
 
 
 class QCrasherMenuBar(QMenuBar):

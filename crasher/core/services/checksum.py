@@ -1,8 +1,3 @@
-# Code by @selfkilla666
-# https://github.com/witch-software/crasher
-# MIT License
-
-from __future__ import annotations
 
 from pathlib import Path
 from hashlib import new as new_algorithm

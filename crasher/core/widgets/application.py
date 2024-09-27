@@ -91,7 +91,7 @@ class QCrasherApplication(QApplication):
         self.setOrganizationDomain(self.Metadata.APPLICATION_ORG_DOMAIN)
 
         # Set application icon
-        icon = QIcon(str(Path("./crasher/static/app_icon.png")))
+        icon = QIcon(str(Path("./crasher/static/application_icon.png")))
         self.setWindowIcon(icon)
 
     def initialize_settings(self) -> None:

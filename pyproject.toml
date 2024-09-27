@@ -31,7 +31,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-exclude = [".git", "__pycache__", "venv"]
+exclude = [".git", "__pycache__", "venv", "pyproject.toml"]
 ignore = [
     "H101",  # File contains shebang
     "H202",  # Use of `print` as a statement

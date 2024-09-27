@@ -1,5 +1,4 @@
 
-import sys
 from argparse import Namespace
 
 from pathlib import Path
@@ -20,7 +19,6 @@ __all__ = ["QCrasherApplication"]
 
 class QCrasherApplication(QApplication):
     """ Custom PySide6.QApplication implementation for Crasher """
-    
     class Metadata:
         APPLICATION_NAME: str = "Crasher"
         APPLICATION_VERSION: str = "1.0.0b"

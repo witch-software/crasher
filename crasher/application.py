@@ -9,15 +9,6 @@ DEFAULT_WINDOWLESS: bool = False
 DEFAULT_DEBUG: bool = False
 
 
-DESCRIPTION: str = """
-Crasher application with launch arguments. \n\n
-
-Crasher is an open-source application designed for creating glitch art using Python.
-It provides tools for generating unique visual distortions in images, offering a 
-creative platform for artists and developers interested in glitch aesthetics.
-"""
-
-
 def get_run_arguments() -> argparse.Namespace:
     """
     Parse command line arguments for the application.
@@ -27,7 +18,7 @@ def get_run_arguments() -> argparse.Namespace:
 
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         prog="crasher",
-        description=DESCRIPTION
+        description="Crasher application with launch arguments."
     )
 
     # General Options

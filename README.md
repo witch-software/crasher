@@ -30,6 +30,7 @@ Contributions are encouraged and appreciated. If you would like to report issues
 3. Implement and test your changes.
 4. Open a pull request for review.
 
+For more information, refer to our [Contributing Guide](https://github.com/witch-software/crasher/blob/main/CONTRIBUTING.md).
 
 ## License
 

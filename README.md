@@ -1,25 +1,39 @@
 # 🔨 Crasher
 
-🎨👨🏻‍💻 Application for making glitch art
+**Crasher** is an open-source application designed for creating glitch art using Python. It provides tools for generating unique visual distortions in images, offering a creative platform for artists and developers interested in glitch aesthetics.
 
 ![Made with Python](https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-black.svg)
 ![Python versions: 3.10, 3.11, 3.12](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![Build status](https://github.com/witch-software/crasher/actions/workflows/testing.yml/badge.svg?branch=main)
 
-**Crasher** is a powerful application for creating glitch art, with open sources and written in Python 🐍
-
 ## Downloads
 
-You can install the latest stable version of the program from [our page on Itch.io](https://witchsoftware.itch.io/crasher), or you can use the version from the [GitHub releases](https://github.com/witch-software/crasher/releases)
+You can install the latest stable version of the program from [our page on Itch.io](https://witchsoftware.itch.io/crasher), or you can use the version from the [GitHub releases](https://github.com/witch-software/crasher/releases).
 
-- [Latest stable release](https://witchsoftware.itch.io/crasher)
-- [Latest unstable release](https://witchsoftware.itch.io/crasher/releases/latest)
+- [Latest stable release](https://witchsoftware.itch.io/crasher) *(from Itch.io)*
+- [Latest unstable release](https://witchsoftware.itch.io/crasher/releases/latest) *(from GitHub releases)*
 - [All releases](https://github.com/witch-software/crasher/releases)
+
+## Features
+
+- **Intuitive glitch effects**: Add creative distortions to images.
+- **Multiple file format support**: Work with popular image formats such as PNG, JPEG, and BMP.
+- **Customizable glitch intensity**: Control the level of corruption applied to images.
+- **Cross-platform**: Works on Windows, macOS, and Linux.
+
+## Contribution
+
+Contributions are encouraged and appreciated. If you would like to report issues, suggest new features, or contribute code, please follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Implement and test your changes.
+4. Open a pull request for review.
+
 
 ## License
 
-Crasher is provided under the [MIT License](https://github.com/witch-software/crasher/blob/main/LICENSE)
+Crasher is open-source software licensed under the [MIT License](https://github.com/witch-software/crasher/blob/main/LICENSE).
 
 ```text
 MIT License

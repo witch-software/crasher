@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '**.py'
+      - "**.py"
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ["3.11", "3.12"]
     name: Linting on Python ${{ matrix.python-version }}
 
     steps:
@@ -44,16 +44,15 @@ jobs:
           poetry install --with dev
         working-directory: ${{ github.workspace }}
 
-      - name: Check code style (using flake8)
+      - name: Check code style (using ruff)
         run: |
-          poetry run flake8 crasher
+          poetry run ruff check crasher
         working-directory: ${{ github.workspace }}
 
       - name: Check correct typing (using mypy)
         run: |
           poetry run mypy crasher
         working-directory: ${{ github.workspace }}
-
 
   #unittest:
   # TODO: Add unittests to this workflow

@@ -31,7 +31,13 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-exclude = [".git", "__pycache__", "venv", "pyproject.toml"]
+line-length = 88
+exclude = [".git", "__pycache__", "venv"]
 ignore = [
-    "W191", "I001", "I201", "I202", "E303", "RUF005", "E501", "W292"
+    "T201",     # No print statements (H202)
+    "W191",     # Tabs instead of spaces (H233)
+    "E303",     # Too many blank lines (H401)
+    "RUF005",   # Prefer f-strings (H501)
+    "E501",     # Line too long (E501)
+    "W292",     # No newline at end of file (W292)
 ]

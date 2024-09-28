@@ -8,6 +8,7 @@ from PySide6.QtWidgets import QMainWindow
 
 from crasher.core.widgets.statusbar import QCrasherStatusBar
 from crasher.core.widgets.menubar import QCrasherMenuBar
+from crasher.core.widgets.workspace.workspace import QCrasherWorkspace
 
 import loguru
 
@@ -21,15 +22,19 @@ class QCrasherWindow(QMainWindow):
     # TODO: Set geometry for window at initialize_ui()
 
     logger: loguru.Logger
+
     application: QCrasherApplication
+
     status_bar: QCrasherStatusBar
     menu_bar: QCrasherMenuBar
+    workspace: QCrasherWorkspace
 
     def __init__(self, *, application: QCrasherApplication) -> None:
 
         super().__init__()
 
         self.application: QCrasherApplication = application
+
         self.logger: loguru.Logger = self.application.logger
 
         self.initialize_ui()
@@ -55,6 +60,13 @@ class QCrasherWindow(QMainWindow):
         self.setMenuBar(self.menu_bar)
 
         self.logger.success("Application menubar successfully initialized!")
+
+        # Initialize workspace
+        self.logger.info("Start initialize application workspace...")
+        self.workspace = QCrasherWorkspace(self, application=self.application)
+        self.setCentralWidget(self.workspace)
+
+        self.logger.success("Application workspace successfully initialized!")
 
         self.translate_ui()
 
